@@ -12,7 +12,7 @@ spec:
   source:
     path   : "prod/aplications"
     repoURL: "git@github.com:nazarito0/ArgoCD.git"
-    targetRevision: HEAD
+    targetRevision: main
   project: default
   syncPolicy:
     automated:
