@@ -5,4 +5,4 @@ metadata:
 data:
   APP_MODE: "db"
   DB_PORT: "5432"
-  DATABASE_URL: "postgres://database-service:5432/postgres"
+  DATABASE_URL: "postgres://postgres-service:5432/postgres"

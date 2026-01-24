@@ -20,7 +20,7 @@ spec:
           envFrom:
           - secretRef:
             name: postgres-secret 
-          volumeMount:
+          volumeMounts:
             - mountPath: /data
               name: db-volume
       volumes:
