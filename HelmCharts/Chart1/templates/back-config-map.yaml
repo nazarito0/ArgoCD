@@ -5,4 +5,4 @@ metadata:
 data:
   APP_MODE: "back"
   #API_URL: "http://backend-service:5000"
-  API_URL: "http://192.168.50.34:30002" # тільки локально
+  API_URL: "http://192.168.50.34:5000" # тільки локально

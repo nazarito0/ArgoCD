@@ -3,11 +3,9 @@ kind: Service
 metadata:
   name: frontend-service
 spec:
-  type: NodePort # тільки локально
   selector:
     app: frontend
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30001 # Write the access port (in range 30000-32767)
