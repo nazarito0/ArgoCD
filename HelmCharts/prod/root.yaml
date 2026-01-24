@@ -10,7 +10,7 @@ spec:
     name     : in-cluster
     namespace: argocd
   source:
-    path   : "prod/aplications"
+    path   : "HelmCharts/prod/aplications"
     repoURL: "git@github.com:nazarito0/ArgoCD.git"
     targetRevision: HEAD
   project: default
