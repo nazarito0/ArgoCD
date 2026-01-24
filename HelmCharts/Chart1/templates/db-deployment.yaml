@@ -6,11 +6,11 @@ spec:
   replicas: {{ .Values.db.replicaCount }}
   selector:
     matchLabels:
-      app: db
+      app: postgres
   template:
     metadata:
       labels:
-        app: db
+        app: postgres
     spec:
       containers:
         - name: db
@@ -21,7 +21,7 @@ spec:
             - secretRef:
                 name: postgres-secret 
           volumeMounts:
-            - mountPath: /data
+            - mountPath: /var/lib/postgresql/data
               name: db-volume
       volumes:
             - name: db-volume
