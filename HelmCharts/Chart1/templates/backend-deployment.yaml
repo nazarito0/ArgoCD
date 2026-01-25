@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: {{ include "mychart.fullname" . }}-backend-deployment
 spec:
   replicas: {{ .Values.backend.replicaCount }}
   selector:
@@ -15,6 +15,9 @@ spec:
       containers:
         - name: backend
           image: {{ .Values.backend.image }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+          resources:
+            {{- toYaml .Values.backend.resources | nindent 12 }} # пробіли з лівого краю це число 12
           ports:
             - containerPort: 5000
           envFrom:

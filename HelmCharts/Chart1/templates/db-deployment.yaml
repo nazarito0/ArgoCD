@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-deployment
+  name: {{ include "mychart.fullname" . }}-db-deployment
 spec:
   replicas: {{ .Values.db.replicaCount }}
   selector:
@@ -15,6 +15,9 @@ spec:
       containers:
         - name: db
           image: {{ .Values.db.image }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+          resources:
+            {{- toYaml .Values.db.resources | nindent 12 }} # пробіли з лівого краю це число 12
           ports:
             - containerPort: 5432
           envFrom:
