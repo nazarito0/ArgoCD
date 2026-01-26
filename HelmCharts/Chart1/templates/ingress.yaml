@@ -3,26 +3,27 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/use-regex: "true" # ОБОВ'ЯЗКОВО для роботи (.*)
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
+  ingressClassName: nginx
   rules:
   - host: frontend.com
     http:
       paths:
-      # Шлях для API (має бути ПЕРШИМ, щоб перехоплювати /api)
-      - path: /api(/|$)(.*)
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 5000
-      # Шлях для фронтенду
-      - path: /()(.*)
-        pathType: ImplementationSpecific
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: {{ include "mychart.fullname" . }}-frontend-service
             port:
               number: 80
+  - host: backend.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 5000
