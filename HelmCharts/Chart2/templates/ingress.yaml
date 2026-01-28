@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: monitoring # ОБОВ'ЯЗКОВО той самий неймспейс, де Grafana
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: grafana.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: # тут сервір графана # Перевір через kubectl get svc -n monitoring
+            port:
+              number: # тут порт графана # Порт самого сервісу (Service), а не контейнера

@@ -1,0 +1,47 @@
+# Налаштування VictoriaMetrics Stack
+victoria-metrics-k8s-stack:
+  # Налаштування бази даних
+  vmsingle:
+    spec:
+      retentionPeriod: "1d" # Зберігаємо метрики 1 день для економії місця
+      resources:
+        limits:
+          memory: "800Mi"
+        requests:
+          memory: "400Mi"
+
+  # Агент, який збирає метрики
+  vmagent:
+    spec:
+      resources:
+        limits:
+          memory: "300Mi"
+        requests:
+          memory: "150Mi"
+
+  # Налаштування Grafana (вбудована в чарт VM)
+  grafana:
+    enabled: true
+    adminPassword: "admin" # Встанови свій пароль
+    additionalDataSources:
+      - name: Loki
+        type: loki
+        url: http://loki-stack.monitoring.svc.cluster.local:3100
+        access: proxy
+
+# Налаштування Loki Stack
+loki-stack:
+  loki:
+    config:
+      table_manager:
+        retention_deletes_enabled: true
+        retention_period: 24h # Зберігати логи лише добу
+    enabled: true
+    persistence:
+      enabled: false # Для пет-проекту на віртуалці вимикаємо PVC, щоб не було проблем з правами
+  promtail:
+    enabled: true
+    # Налаштовуємо клієнта Loki
+    config:
+      clients:
+        - url: http://loki-stack:3100/loki/api/v1/push
