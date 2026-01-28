@@ -32,20 +32,3 @@ victoria-metrics-k8s-stack:
       requests:
         memory: "256Mi"
         cpu: "200m"
-
-# Налаштування Loki Stack
-loki-stack:
-  loki:
-    config:
-      table_manager:
-        retention_deletes_enabled: true
-        retention_period: 24h # Зберігати логи лише добу
-    enabled: true
-    persistence:
-      enabled: false # Для пет-проекту на віртуалці вимикаємо PVC, щоб не було проблем з правами
-  promtail:
-    enabled: true
-    # Налаштовуємо клієнта Loki
-    config:
-      clients:
-        - url: http://loki-stack:3100/loki/api/v1/push
