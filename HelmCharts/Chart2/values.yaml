@@ -28,8 +28,9 @@ victoria-metrics-k8s-stack:
     additionalDataSources:
       - name: Loki
         type: loki
-        url: http://myapp2-helm-loki-stack:3100
+        url: http://vm-loki-stack:3100
         access: proxy
+        isDefault: false
     resources:
       limits:
         memory: "1Gi"   # Ставимо 1 ГБ (потім зменшимо, якщо треба)
