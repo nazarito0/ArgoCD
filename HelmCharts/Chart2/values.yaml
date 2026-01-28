@@ -23,11 +23,20 @@ victoria-metrics-k8s-stack:
   grafana:
     enabled: true
     adminPassword: "admin" # Встанови свій пароль
+    persistence:
+      enabled: false # Вимикаємо диски, щоб не було CrashLoop через права
     additionalDataSources:
       - name: Loki
         type: loki
-        url: http://loki-stack.monitoring.svc.cluster.local:3100
+        url: http://myapp2-helm-loki-stack:3100
         access: proxy
+    resources:
+      limits:
+        memory: "1Gi"   # Ставимо 1 ГБ (потім зменшимо, якщо треба)
+        cpu: "1000m"    # Даємо ціле ядро для швидкого старту
+      requests:
+        memory: "256Mi"
+        cpu: "200m"
 
 # Налаштування Loki Stack
 loki-stack:
