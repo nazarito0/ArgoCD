@@ -13,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: myapp2-helm-grafana
+            name: vm-grafana
             port:
               number: 80
