@@ -26,11 +26,11 @@ victoria-metrics-k8s-stack:
     persistence:
       enabled: false # Вимикаємо диски, щоб не було CrashLoop через права
     additionalDataSources:
-      - name: Loki
+      - name: Loki-Stack
         type: loki
         url: http://vm-loki-stack:3100
         access: proxy
-        isDefault: false
+        isDefault: false # це для локі бо по дефолту один датасорс в мене це вікторія метрик
     resources:
       limits:
         memory: "1Gi"   # Ставимо 1 ГБ (потім зменшимо, якщо треба)
