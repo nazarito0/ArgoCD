@@ -13,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: # тут сервір графана # Перевір через kubectl get svc -n monitoring
+            name: myapp2-helm-grafana
             port:
-              number: # тут порт графана # Порт самого сервісу (Service), а не контейнера
+              number: 80
