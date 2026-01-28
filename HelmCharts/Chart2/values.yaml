@@ -13,11 +13,25 @@ victoria-metrics-k8s-stack:
   # Агент, який збирає метрики
   vmagent:
     spec:
+      extraArgs:
+        "common.export.labels": "cluster=my-cluster"
+      # Цей блок каже vmagent шукати логи у файлах контейнерів
+      # Якщо версія чарту 0.45.0, vmagent сам може виступати збирачем
       resources:
         limits:
-          memory: "300Mi"
+          memory: "400Mi"
         requests:
-          memory: "150Mi"
+          memory: "200Mi"
+
+  vlogs:
+    enabled: true
+    spec:
+      retentionPeriod: "1d"
+      resources:
+        limits:
+          memory: "512Mi"
+        requests:
+          memory: "256Mi"
 
   # Налаштування Grafana (вбудована в чарт VM)
   grafana:
