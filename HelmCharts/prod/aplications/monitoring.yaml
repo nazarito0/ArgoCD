@@ -19,4 +19,5 @@ spec:
       prune   : true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true  
+      - CreateNamespace=true
+      - ServerSideApply=true  # ЦЕ КЛЮЧОВИЙ РЯДОК вирішує Too long: may not be more than 262144 bytes
