@@ -25,17 +25,6 @@ victoria-metrics-k8s-stack:
     adminPassword: "admin" # Встанови свій пароль
     persistence:
       enabled: false # Вимикаємо диски, щоб не було CrashLoop через права
-    # Цей блок активує автоматичне підтягування конфігів
-    sidecar:
-      datasources:
-        enabled: true
-        searchNamespace: ALL
-    additionalDataSources:
-      - name: Loki-Stack
-        type: loki
-        url: http://vm-loki:3100
-        access: proxy
-        isDefault: false # це для локі бо по дефолту один датасорс в мене це вікторія метрик
     resources:
       limits:
         memory: "1Gi"   # Ставимо 1 ГБ (потім зменшимо, якщо треба)
