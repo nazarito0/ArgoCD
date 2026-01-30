@@ -61,7 +61,7 @@ fluent-bit:
       [OUTPUT]
           Name  http
           Match *
-          Host  mychartV2-victoria-logs-single-server # Перевірити назву сервісу після запуску чи така сама назва
+          Host  vm-victoria-logs-single-server # Перевірити назву сервісу після запуску чи така сама назва
           Port  9428
           URI   /insert/jsonline?_stream_fields=kubernetes.pod_name,kubernetes.container_name
           Format json_lines
