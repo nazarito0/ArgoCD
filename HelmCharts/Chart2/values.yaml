@@ -60,7 +60,7 @@ fluent-bit:
     filters: |
       [FILTER]
           Name modify
-          Match: *
+          Match *
           Rename log _msg
     outputs: |
       [OUTPUT]
