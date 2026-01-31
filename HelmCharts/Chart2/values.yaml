@@ -59,7 +59,7 @@ fluent-bit:
   config:
     filters: |
       [FILTER]
-          Name: modify
+          Name modify
           Match: *
           Rename log _msg
     outputs: |
