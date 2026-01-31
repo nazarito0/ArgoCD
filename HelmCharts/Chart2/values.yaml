@@ -57,11 +57,6 @@ victoria-logs-single:
 # Агент який збирає логи для single
 fluent-bit:
   config:
-    filters: |
-      [FILTER]
-          Name modify
-          Match *
-          Rename log _msg
     outputs: |
       [OUTPUT]
           Name  http
