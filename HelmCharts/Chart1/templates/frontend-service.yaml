@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: {{ include "mychart.fullname" . }}-frontend-service
 spec:
+  type: {{ .Values.service.type }}
   selector:
     app: {{ include "mychart.fullname" . }}-frontend
   ports:

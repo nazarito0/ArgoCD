@@ -40,3 +40,6 @@ db:
       memory: 256Mi
 
 imagePullPolicy: IfNotPresent
+
+service:
+  type: ClusterIp
