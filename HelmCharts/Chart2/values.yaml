@@ -71,6 +71,8 @@ fluent-bit:
           Rename        msg _msg
           Rename        level _level
           Rename        severity _level
+          Rename        status _level
+          Rename        stream _stream
     outputs: |
       [OUTPUT]
           Name  http
