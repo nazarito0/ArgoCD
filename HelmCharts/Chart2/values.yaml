@@ -69,6 +69,8 @@ fluent-bit:
           Match         *
           Rename        log _msg
           Rename        message _msg
+          Rename        level _level
+          Rename        stream _stream
     outputs: |
       [OUTPUT]
           Name  http
