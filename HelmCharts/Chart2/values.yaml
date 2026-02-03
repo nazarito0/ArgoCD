@@ -39,6 +39,10 @@ victoria-metrics-k8s-stack:
         memory: "256Mi"
         cpu: "200m"
 
+  victoria-metrics-operator:
+    admissionWebhooks:
+      enabled: false
+
 victoria-logs-single:
   server:
     retentionPeriod: "1d"
