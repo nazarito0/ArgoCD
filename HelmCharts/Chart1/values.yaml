@@ -42,4 +42,4 @@ db:
 imagePullPolicy: IfNotPresent
 
 service:
-  type: ClusterIp
+  type: ClusterIP
