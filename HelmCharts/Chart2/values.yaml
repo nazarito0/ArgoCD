@@ -75,7 +75,7 @@ fluent-bit:
           Match *
           Host  vm-victoria-logs-single-server
           Port  9428
-          URI   /insert/jsonline?_stream_fields=kubernetes.pod_name,kubernetes.container_name
+          URI   /insert/jsonline?_stream_fields=pod_name,container_name,namespace_name
           Format json_lines
           json_date_format iso8601
   # У чарті Fluent Bit ресурси пишуться безпосередньо в секції resources без spec
