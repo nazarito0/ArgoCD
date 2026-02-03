@@ -57,6 +57,18 @@ victoria-logs-single:
 # Агент який збирає логи для single
 fluent-bit:
   config:
+    filters: |
+      [FILTER]
+          Name          nest
+          Match         *
+          Operation     lift
+          Nested_under  kubernetes
+          
+      [FILTER]
+          Name          modify
+          Match         *
+          Rename        log _msg
+          Rename        message _msg
     outputs: |
       [OUTPUT]
           Name  http
